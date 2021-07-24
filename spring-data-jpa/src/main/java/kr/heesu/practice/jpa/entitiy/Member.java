@@ -1,23 +1,26 @@
 package kr.heesu.practice.jpa.entitiy;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter @Setter
 @ToString(exclude = "team")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class Member {
 
     @Id
@@ -32,6 +35,14 @@ public class Member {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
     private Team team;
+
+    private String name;
+
+    @Embedded
+    private Address address;
+
+    @OneToMany(mappedBy = "member") // 난 저 필드로 매핑된 테이블이야
+    private List<Order> orders = new ArrayList<>();
 
     public Member(String username) {
         this(username, 0);

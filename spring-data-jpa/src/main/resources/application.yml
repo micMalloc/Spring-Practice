@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/jpashop
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create # 기본적으로 생성 후 드랍 시킨다.
+    properties:
+      hibernate:
+#        show_sql: true # sout
+        format_sql: true
+        default_batch_fetch_size: 100
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+
+logging:
+  level:
+    org.hibernate.SQL: debug # Logger 를 활용
+#    org.hibernate.type: trace
