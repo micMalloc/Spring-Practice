@@ -20,11 +20,19 @@ subprojects {
 
     repositories {
         mavenCentral()
+        maven {
+            url "https://repo.spring.io/milestone/"
+        }
     }
 
     dependencies {
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
+
+        implementation("org.mapstruct:mapstruct:1.4.0.Final")
+        annotationProcessor("org.mapstruct:mapstruct-processor:1.4.0.Final")
+        
+        implementation("org.springframework.boot:spring-boot-starter-validation")
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
     }
 
