@@ -5,4 +5,5 @@ include 'spring-webflux'
 include 'servlet'
 include 'spring-data-r2dbc'
 include 'spring-data-elasticsearch'
+include 'spring-data-jpa'
 
