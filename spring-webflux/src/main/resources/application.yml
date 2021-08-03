@@ -1,0 +1,6 @@
+
+hosts:
+  notification:
+    sms:
+      protocol: https
+      url: sens.apigw.ntruss.com
