@@ -1,6 +1,12 @@
+server:
+  port: 8081
 
 hosts:
   notification:
     sms:
       protocol: https
       url: sens.apigw.ntruss.com
+  blog:
+    tistory:
+      protocol: https
+      url: www.tistory.com

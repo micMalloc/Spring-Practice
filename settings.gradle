@@ -9,4 +9,4 @@ include 'spring-data-jpa'
 include 'common'
 include 'spring-cloud'
 include 'spring-kotlin'
-
+include 'spring-core'
