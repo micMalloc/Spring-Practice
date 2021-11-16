@@ -1,29 +1,27 @@
-package kr.heesu.practice.spring.core.advanced.trace.template;
+package kr.heesu.practice.spring.core.advanced.trace.application.v3;
 
 import kr.heesu.practice.spring.core.advanced.trace.TraceStatus;
 import kr.heesu.practice.spring.core.advanced.trace.logtrace.LogTrace;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
 @RequiredArgsConstructor
-public abstract class AbstractTemplate<T> {
+public class OrderServiceV3 {
 
     private final LogTrace trace;
+    private final OrderRepositoryV3 orderRepository;
 
-    public T execute(String message) {
+    public void orderItem(String itemId) {
         TraceStatus status = null;
+
         try {
-            status = trace.begin(message);
-
-            //로직 호출
-            T result = call();
-
+            status = trace.begin("OrderService.orderItem()");
+            orderRepository.save(itemId);
             trace.end(status);
-            return result;
         } catch (Exception e) {
             trace.exception(status, e);
             throw e;
         }
     }
-
-    protected abstract T call();
 }
