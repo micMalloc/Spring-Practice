@@ -20,7 +20,7 @@ public class OrderControllerV3 {
         return "ok";
     }
 
-    @GetMapping("/v2/no-log")
+    @GetMapping("/v3/no-log")
     public String noLog() {
         return "ok";
     }

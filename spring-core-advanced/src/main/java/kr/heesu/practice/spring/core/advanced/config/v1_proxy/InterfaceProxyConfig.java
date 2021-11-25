@@ -10,6 +10,7 @@ import kr.heesu.practice.spring.core.advanced.proxy.application.v1.OrderReposito
 import kr.heesu.practice.spring.core.advanced.proxy.application.v1.OrderServiceV1;
 import kr.heesu.practice.spring.core.advanced.proxy.application.v1.OrderServiceV1Impl;
 import kr.heesu.practice.spring.core.advanced.trace.logtrace.LogTrace;
+import kr.heesu.practice.spring.core.advanced.trace.logtrace.ThreadLocalTrace;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -32,5 +33,10 @@ public class InterfaceProxyConfig {
     public OrderRepositoryV1 orderRepository(LogTrace logTrace) {
         OrderRepositoryV1 repositoryImpl = new OrderRepositoryV1Impl();
         return new OrderRepositoryInterfaceProxy(logTrace, repositoryImpl);
+    }
+
+    @Bean
+    public LogTrace logTrace() {
+        return new ThreadLocalTrace();
     }
 }

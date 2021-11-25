@@ -7,6 +7,7 @@ import kr.heesu.practice.spring.core.advanced.proxy.application.v2.OrderControll
 import kr.heesu.practice.spring.core.advanced.proxy.application.v2.OrderRepositoryV2;
 import kr.heesu.practice.spring.core.advanced.proxy.application.v2.OrderServiceV2;
 import kr.heesu.practice.spring.core.advanced.trace.logtrace.LogTrace;
+import kr.heesu.practice.spring.core.advanced.trace.logtrace.ThreadLocalTrace;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -29,5 +30,10 @@ public class ConcreteProxyConfig {
     public OrderRepositoryV2 orderRepositoryV2(LogTrace logTrace) {
         OrderRepositoryV2 repositoryImpl = new OrderRepositoryV2();
         return new OrderRepositoryConcreteProxy(logTrace, repositoryImpl);
+    }
+
+    @Bean
+    public LogTrace logTrace() {
+        return new ThreadLocalTrace();
     }
 }
