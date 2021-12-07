@@ -1,11 +1,11 @@
 package kr.heesu.practice.spring.core;
 
-import kr.heesu.practice.spring.core.advanced.config.v1_proxy.ConcreteProxyConfig;
+import kr.heesu.practice.spring.core.advanced.config.v2_dynmaicproxy.DynamicProxyFilterConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 
-@Import(ConcreteProxyConfig.class)
+@Import(DynamicProxyFilterConfig.class)
 @SpringBootApplication(scanBasePackages = "kr.heesu.practice.spring.core.advanced.proxy")
 public class SpringCorePracticeApplication {
 
